@@ -13,14 +13,14 @@ async function bootstrap() {
     logger: createWinstonLogger()
   });
 
-  const logger = new Logger('Gaplashamizmi-api');
+  const logger = new Logger('Usta_top');
 
   try {
     const configService = app.get(ConfigService);
-    const port = configService.get<number>('SERVER_PORT') ?? 5000;
+    const port = configService.get<number>('APP_PORT') ?? 5000;
 
-    app.setGlobalPrefix(configService.get<string>("PREFIX"))
-    app.enableVersioning({ type: VersioningType.URI, defaultVersion: configService.get<string>("VERSION") })
+    app.setGlobalPrefix(configService.get<string>("API_PREFIX"))
+    app.enableVersioning({ type: VersioningType.URI, defaultVersion: configService.get<string>("API_VERSION") })
 
     corsConfig(app);
     setUpswagger(app);
