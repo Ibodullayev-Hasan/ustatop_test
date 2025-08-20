@@ -1,6 +1,6 @@
 import { BadRequestException, INestApplication, ValidationPipe } from "@nestjs/common";
 
-export const SetUpValidationConfig = (app: INestApplication) => {
+export const setupGlobalPipes = (app: INestApplication) => {
 	app.useGlobalPipes(new ValidationPipe({
 		whitelist: true,
 		forbidNonWhitelisted: true,
