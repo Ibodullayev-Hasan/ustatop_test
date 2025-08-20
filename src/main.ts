@@ -6,6 +6,7 @@ import { Logger, VersioningType } from '@nestjs/common';
 import { RoutesExceptionFilter } from './common/filters';
 import { corsConfig, setupGlobalPipes, setUpswagger } from './configs';
 import { ConfigService } from '@nestjs/config';
+import helmet from 'helmet';
 
 async function bootstrap() {
 
@@ -25,7 +26,8 @@ async function bootstrap() {
     corsConfig(app);
     setUpswagger(app);
     setupGlobalPipes(app);
-
+    app.use(helmet())
+    
     app.useGlobalFilters(new RoutesExceptionFilter());
 
     // HTTP va WebSocket bitta portda ishlaydi

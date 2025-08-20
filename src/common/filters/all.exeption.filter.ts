@@ -41,7 +41,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
       stack: process.env.NODE_ENV !== 'production' ? stack : undefined, // Only in dev
     };
 
-    // Terminalga to'liq log
     this.logger.error(`[${request.method}] ${request.url}`, stack);
 
     response.status(status).json(errorResponse);

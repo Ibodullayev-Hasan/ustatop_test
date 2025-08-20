@@ -10,14 +10,14 @@ export class User implements IUser {
 	@Column({ type: "text" })
 	firstName: string;
 
-	@Column({ type: "text" })
-	lastName: string;
+	@Column({ type: "text", nullable: true })
+	lastName?: string;
 
 	@Column({ type: "varchar", unique: true })
 	email: string;
 
 	@Column({ type: "text", nullable: true })
-	password: string;
+	password?: string;
 
 	@Column({
 		type: "text",
@@ -27,6 +27,9 @@ export class User implements IUser {
 
 	@Column({ type: "enum", enum: UserRole, default: UserRole.Client })
 	role?: UserRole;
+
+	@Column({ type: "text", default: "local" })
+	provider: "local" | "google";
 
 	@Column({ type: "text", nullable: true })
 	expertise?: string;

@@ -6,20 +6,20 @@ export class CreateUserDto {
 	@IsString()
 	firstName: string;
 
-	@IsNotEmpty()
+	@IsOptional()
 	@IsString()
-	lastName: string;
+	lastName?: string;
 
 	@IsNotEmpty()
 	@IsEmail()
 	email: string;
 
-	@IsNotEmpty()
+	@IsOptional()
 	@IsString()
 	@Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,12}$/, {
 		message: "Password must be 6-12 characters long, include at least one uppercase letter, one lowercase letter, and one number (e.g. A1234a)",
 	})
-	password: string;
+	password?: string;
 
 	@IsOptional()
 	@IsUrl()
